@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="kembali"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="header">
+    <h1>Login</h1>
+    <p>Use your email and password to login</p>
+  </div>
+
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <div class="form-field">
+      <ion-icon name="mail-open-outline"></ion-icon>
+      <ion-input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        #emailInput="ngModel"
+        placeholder="Email"
+      >
+      </ion-input>
+      <div
+        *ngIf="emailInput.invalid && emailInput.touched"
+        style="color: red; margin-left: 13px; margin-top: 5px"
+      >
+        Email tidak valid.
+      </div>
+    </div>
+    <div class="form-field">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input
+        type="password"
+        [(ngModel)]="password"
+        [ngModelOptions]="{standalone: true}"
+        placeholder="Password"
+      ></ion-input>
+    </div>
+    <ion-button expand="block" [disabled]="loginForm.invalid" type="submit"
+      >Login</ion-button
+    >
+    <div class="social-login-container">
+      <p>Or Register</p>
+    </div>
+    <ion-button
+      expand="block"
+      class="signup-button"
+      fill="outline"
+      routerLink="/register"
+      type="submit"
+      >Register</ion-button
+    >
+  </form>
+</ion-content>
